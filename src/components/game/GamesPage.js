@@ -1,4 +1,7 @@
 import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as gameActions from '../../actions/gameActions';
 
 class GamesPage extends React.Component {
   constructor(props, context) {
@@ -20,13 +23,18 @@ class GamesPage extends React.Component {
   }
 
   onClickSave(event) {
-    alert(`Saving ${this.state.game.title}`);
+    this.props.actions.createGame(this.state.game);
   }
+
+  gameRow(game, index) {
+    return <div key={index}>{game.title}</div>;
+  }
+
   render() {
     return (
       <div>
         <h1>Games</h1>
-
+        {this.props.games.map(this.gameRow)}
         <h2>Add Game</h2>
 
         <input
@@ -44,4 +52,21 @@ class GamesPage extends React.Component {
   }
 }
 
-export default GamesPage;
+GamesPage.propTypes = {
+  games: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+  return {
+    games: state.games
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(gameActions, dispatch)
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(GamesPage);
+
