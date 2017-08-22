@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 const GameListRow = ({game}) => {
   return (
     <tr>
-      <td>{game.Name}</td>
+      <td><Link to={'/game/' + game.Id}>{game.Name}</Link></td>
       <td>{game.Description}</td>
     </tr>
   );
