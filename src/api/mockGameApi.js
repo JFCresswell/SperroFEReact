@@ -5,17 +5,20 @@ const games = [
   {
     Id: 1,
     Name: 'Angry Birds',
-    Description: 'Popular phone app'
+    Description: 'Popular phone app',
+    CompanyId: 2
   },
   {
     Id: 2,
     Name: 'Geographica',
-    Description: 'Geography quiz'
+    Description: 'Geography quiz',
+    CompanyId: 1
   },
   {
     Id: 3,
     Name: 'Spider Solitaire',
-    Description: 'Solitaire card game'
+    Description: 'Solitaire card game',
+    CompanyId: 3
   }
 ];
 

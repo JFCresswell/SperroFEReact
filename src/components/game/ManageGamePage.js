@@ -17,6 +17,7 @@ export class ManageGamePage extends React.Component {
   render() {
     return (
         <GameForm
+          allCompanies={this.props.companies}
           game={this.state.game}
           errors={this.state.errors}
         />
@@ -24,14 +25,25 @@ export class ManageGamePage extends React.Component {
   }
 }
 
-ManageGamePage.PropTypes = {
-  game: PropTypes.string.isRequired
+ManageGamePage.propTypes = {
+  game: PropTypes.string.isRequired,
+  companies: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-  let game = {id: 0, Name: '', Description: ''};
+  let game = {Id: 0, Name: '', Description: '', CompanyId: 0};
+
+  const companiesFormattedForDropdown = state.companies.map(company => {
+    return {
+      value: company.Id,
+      text: company.Name
+    };
+  });
+
   return {
-    game: game
+    game: game,
+    companies: companiesFormattedForDropdown
   };
 }
 

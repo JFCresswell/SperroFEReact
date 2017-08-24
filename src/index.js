@@ -7,12 +7,15 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import {loadGames} from './actions/gameActions';
+import {loadCompanies} from './actions/companyActions';
+
 
 import './styles/styles.css'; //Webpack can import CSS files too!
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const store = configureStore();
 store.dispatch(loadGames());
+store.dispatch(loadCompanies());
 
 render(
   <Provider store={store}>
