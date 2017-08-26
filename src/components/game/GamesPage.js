@@ -3,14 +3,21 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as gameActions from '../../actions/gameActions';
 import GameList from './GameList';
+import {browserHistory} from 'react-router';
 
 class GamesPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+
+    this.redirectToAddGamePage = this.redirectToAddGamePage.bind(this);
   }
 
   gameRow(game, index) {
     return <div key={index}>{game.Name}</div>;
+  }
+
+  redirectToAddGamePage()  {
+    browserHistory.push('/game');
   }
 
   render() {
@@ -19,6 +26,10 @@ class GamesPage extends React.Component {
     return (
       <div>
         <h1>Games</h1>
+        <input type="submit"
+               value="Add Game"
+               className="btn btn-primary"
+               onClick={this.redirectToAddGamePage}/>
         <GameList games={games}/>
       </div>
     );

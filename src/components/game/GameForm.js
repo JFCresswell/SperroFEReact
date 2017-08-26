@@ -7,14 +7,14 @@ const GameForm = ({game, allCompanies, onSave, onChange, saving, errors}) => {
     <form>
       <h1>Manage Game</h1>
       <TextInput
-        name="name"
+        name="Name"
         label="Name"
         value={game.Name}
         onChange={onChange}
         error={errors.Name}/>
 
       <SelectInput
-        name="companyId"
+        name="CompanyId"
         label="Company"
         value={game.CompanyId}
         defaultOption="Select Company"
@@ -22,7 +22,7 @@ const GameForm = ({game, allCompanies, onSave, onChange, saving, errors}) => {
         onChange={onChange} error={errors.Id}/>
 
       <TextInput
-        name="description"
+        name="Description"
         label="Description"
         value={game.Description}
         onChange={onChange}

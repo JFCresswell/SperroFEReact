@@ -51,7 +51,7 @@ class GameApi {
         }
 
         if (game.Id) {
-          const existingGameIndex = games.findIndex(g => g.Id === game.id);
+          const existingGameIndex = games.findIndex(g => g.Id === game.Id);
           games.splice(existingGameIndex, 1, game);
         } else {
           game.Id = generateId(game);

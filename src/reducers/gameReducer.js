@@ -6,6 +6,18 @@ export default function gameReducer(state = initialState.games, action) {
     case types.LOAD_GAMES_SUCCESS:
       return action.games;
 
+    case types.CREATE_GAME_SUCCESS:
+      return [
+        ...state,
+        Object.assign({}, action.game)
+      ];
+
+    case types.UPDATE_GAME_SUCCESS:
+      return [
+        ...state.filter(game => game.Id !== action.game.Id),
+        Object.assign({}, action.game)
+      ];
+
     default:
       return state;
   }

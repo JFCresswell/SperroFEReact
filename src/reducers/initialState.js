@@ -1,4 +1,4 @@
 export default {
   games: [],
   companies: []
-}
+};
