@@ -1,4 +1,5 @@
 export default {
   games: [],
-  companies: []
+  companies: [],
+  ajaxCallsInProgress: 0
 };
