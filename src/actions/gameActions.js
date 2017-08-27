@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 import gameApi from '../api/mockGameApi';
-import {beginAjaxCall} from './ajaxStatusActions';
+import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
 export function loadGamesSuccess(games) {
   return { type: types.LOAD_GAMES_SUCCESS, games };
@@ -32,6 +32,7 @@ export function saveGame(game) {
       game.Id ? dispatch(updateGameSuccess(game)) :
         dispatch(createGameSuccess(game));
     }).catch(error => {
+      dispatch(ajaxCallError(error));
       throw(error);
     });
   };

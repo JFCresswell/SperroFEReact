@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as gameActions from '../../actions/gameActions';
 import GameForm from './GameForm';
+import toastr from 'toastr';
 
 export class ManageGamePage extends React.Component {
   constructor(props, context) {
@@ -34,8 +35,19 @@ export class ManageGamePage extends React.Component {
 
   saveGame(event) {
     event.preventDefault();
-    this.props.actions.saveGame(this.state.game);
-    this.context.router.push('/games');
+    this.setState({saving: true});
+    this.props.actions.saveGame(this.state.game)
+      .then(() => this.redirect())
+      .catch(error => {
+        toastr.error(error);
+        this.setState({saving: false});
+      });
+  }
+
+  redirect() {
+      this.setState({saving: false});
+      toastr.success('Game saved');
+      this.context.router.push('/games');
   }
 
   render() {
@@ -46,6 +58,7 @@ export class ManageGamePage extends React.Component {
           onSave={this.saveGame}
           game={this.state.game}
           errors={this.state.errors}
+          saving={this.state.saving}
         />
      );
   }
