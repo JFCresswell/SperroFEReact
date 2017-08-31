@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as gameActions from '../../actions/gameActions';
 import GameForm from './GameForm';
+import {companiesFormattedForDropdown} from '../../selectors/selectors';
+
 import toastr from 'toastr';
 
 export class ManageGamePage extends React.Component {
@@ -33,8 +35,26 @@ export class ManageGamePage extends React.Component {
     return this.setState({game: game});
   }
 
+  gameFormIsValid() {
+    let formIsValid = true;
+    let errors = {};
+
+    if (this.state.game.Name.length < 3) {
+      errors.Name = 'Name must be at least 3 characters.';
+      formIsValid = false;
+    }
+
+    this.setState({errors: errors});
+    return formIsValid;
+  }
+
   saveGame(event) {
     event.preventDefault();
+
+    if (!this.gameFormIsValid()) {
+      return;
+    }
+
     this.setState({saving: true});
     this.props.actions.saveGame(this.state.game)
       .then(() => this.redirect())
@@ -89,16 +109,9 @@ function mapStateToProps(state, ownProps) {
     game = getGameById(state.games, gameId);
   }
 
-  const companiesFormattedForDropdown = state.companies.map(company => {
-    return {
-      value: company.Id,
-      text: company.Name
-    };
-  });
-
   return {
     game: game,
-    companies: companiesFormattedForDropdown
+    companies: companiesFormattedForDropdown(state.companies)
   };
 }
 

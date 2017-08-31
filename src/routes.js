@@ -4,7 +4,7 @@ import App from './components/App';
 import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 import GamesPage from './components/game/GamesPage';
-import ManageGamePage from './components/game/ManageGamePage';
+import ManageGamePage from './components/game/ManageGamePage'; //eslint-disable-line import/no-named-as-default
 
 export default (
   <Route path="/" component={App}>
