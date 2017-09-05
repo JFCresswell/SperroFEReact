@@ -5,6 +5,7 @@ import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 import LoginPage from './components/login/LoginPage';
 import GamesPage from './components/game/GamesPage';
+import RegisterPage from './components/register/RegisterPage';
 import ManageGamePage from './components/game/ManageGamePage'; //eslint-disable-line import/no-named-as-default
 
 export default (
@@ -14,6 +15,7 @@ export default (
     <Route path="game" component={ManageGamePage} />
     <Route path="game/:id" component={ManageGamePage} />
     <Route path="login" component={LoginPage} />
+    <Route path="register" component={RegisterPage} />
     <Route path="about" component={AboutPage} />
   </Route>
 );

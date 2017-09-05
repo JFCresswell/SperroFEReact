@@ -9,7 +9,9 @@ const Header = ({loading}) => {
       {" | "}
       <Link to="/games" activeClassName="active">Games</Link>
     <div className="navbar-right">
-        <Link to="/login" activeClassName="active">Register</Link>
+        <Link to="/login" activeClassName="active">Login</Link>
+        {" | "}
+        <Link to="/register" activeClassName="active">Register</Link>
         {" | "}
         <Link to="/about" activeClassName="active">About</Link>
     </div>
