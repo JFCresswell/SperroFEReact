@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as registrationActions from '../../actions/registrationActions';
 import Register1Form from './Register1Form';
-// import Register2Form from './Register2Form';
-// import Register3Form from './Register3Form';
-// import Register4Form from './Register4Form';
-// import Register5Form from './Register5Form';
+import Register2Form from './Register2Form';
+import Register3Form from './Register3Form';
+import Register4Form from './Register4Form';
+import Register5Form from './Register5Form';
 
  import {genericFormattedForDropdown,
          numericRangeOpenFormattedForDropdown} from '../../selectors/selectors';
@@ -83,6 +83,12 @@ export class ManageRegisterPage extends React.Component {
     };
 
     this.updateRegistrationState = this.updateRegistrationState.bind(this);
+    this.saveRegistration = this.saveRegistration.bind(this);
+    this.moveNext = this.moveNext.bind(this);
+    this.movePrev = this.movePrev.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
   }
 
   moveNext(event) {
@@ -99,6 +105,36 @@ export class ManageRegisterPage extends React.Component {
     }
   }
 
+  registrationFormIsValid() {
+    let formIsValid = true;
+    let errors = {};
+
+    if (this.state.mysperro.LastName.length < 2) {
+      errors.LastName = 'Name must be at least 2 characters.';
+      formIsValid = false;
+    }
+
+    this.setState({errors: errors});
+    return formIsValid;
+  }
+
+  saveRegistration(event) {
+    event.preventDefault();
+
+    if (!this.registrationFormIsValid()) {
+      return;
+    }
+
+    this.setState({saving: true});
+
+    this.props.actions.saveRegistration(this.state.registration)
+      .then(() => this.redirect())
+      .catch(error => {
+        toastr.error(error);
+        this.setState({saving: false});
+      });
+  }
+
   updateRegistrationState(event) {
     const field = event.target.name;
     let registration = this.state.registration;
@@ -106,11 +142,18 @@ export class ManageRegisterPage extends React.Component {
     return this.setState({registration: registration});
   }
 
+  redirect() {
+    this.setState({saving: false});
+    toastr.success('My data saved');
+    this.context.router.push('/register');
+  }
+
   render() {
-    if (this.state.page === 1) {
+    switch(this.state.page) {
+    case 1:
       return (
         <Register1Form
-          onChange={this.updateMySperroState}
+          onChange={this.updateRegistrationState}
           onNext={this.moveNext}
           registration={this.state.registration}
           confirm={this.state.confirmPassword}
@@ -118,6 +161,61 @@ export class ManageRegisterPage extends React.Component {
           saving={this.state.saving}
         />
       );
+    case 2:
+      return (
+        <Register2Form
+          onChange={this.updateRegistrationState}
+          onPrev = {this.movePrev}
+          onNext={this.moveNext}
+          registration={this.state.registration}
+          allGenders={this.state.genders}
+          maritalStatus={this.state.maritalStatus}
+          errors={this.state.errors}
+          saving={this.state.saving}
+        />
+      );
+
+    case 3:
+      return (
+        <Register3Form
+          onChange={this.updateRegistrationState}
+          onPrev = {this.movePrev}
+          onNext={this.moveNext}
+          registration={this.state.registration}
+          errors={this.state.errors}
+          saving={this.state.saving}
+        />
+      );
+
+    case 4:
+      return (
+        <Register4Form
+          onChange={this.updateRegistrationState}
+          onPrev = {this.movePrev}
+          onNext={this.moveNext}
+          registration={this.state.registration}
+          errors={this.state.errors}
+          saving={this.state.saving}
+        />
+      );
+
+  case 5:
+    return (
+      <Register5Form
+        onChange={this.updateRegistrationState}
+        onPrev = {this.movePrev}
+        onNext={this.moveNext}
+        registration={this.state.registration}
+        allEducation={this.state.education}
+        allIncome={this.state.income}
+        allHouseholdSize={this.state.householdSize}
+        householdIncome={this.state.householdIncome}
+        livingSituation={this.state.livingSituation}
+        errors={this.state.errors}
+        saving={this.state.saving}
+      />
+    );
+
     }
   }
 

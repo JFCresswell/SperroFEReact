@@ -2,42 +2,42 @@ import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 
-const Register2Form = ({mysperro, allGenders, maritalStatus, onNext, onPrev, onChange, errors}) => {
+const Register2Form = ({registration, allGenders, maritalStatus, onNext, onPrev, onChange, errors}) => {
   return (
     <form>
       <h1>Personal information</h1>
       <TextInput
         name="fname"
         label="First Name"
-        defaultValue={mysperro.FirstName}
+        defaultValue={registration.FirstName}
         onChange={onChange}
         error={errors.FirstName}/>
 
       <TextInput
         name="mname"
         label="Middle Name"
-        defaultValue={mysperro.MiddleName}
+        defaultValue={registration.MiddleName}
         onChange={onChange}
         error={errors.LastName}/>
 
       <TextInput
         name="lname"
         label="Last Name"
-        defaultValue={mysperro.LastName}
+        defaultValue={registration.LastName}
         onChange={onChange}
         error={errors.LastName}/>
 
       <TextInput
         name="dob"
         label="Date of Birth"
-        defaultValue={mysperro.DateOfBirth}
+        defaultValue={registration.DateOfBirth}
         onChange={onChange}
         error={errors.DateOfBirth}/>
 
       <SelectInput
         name="gender"
         label="Gender"
-        defaultValue={mysperro.GenderId}
+        defaultValue={registration.GenderId}
         defaultOption="Select Gender"
         options={allGenders}
         onChange={onChange} error={errors.GenderId}/>
@@ -45,7 +45,7 @@ const Register2Form = ({mysperro, allGenders, maritalStatus, onNext, onPrev, onC
       <SelectInput
         name="maritalstatus"
         label="Marital Status"
-        defaultValue={mysperro.MaritalStatusId}
+        defaultValue={registration.MaritalStatusId}
         defaultOption="Select Marital Status"
         options={maritalStatus}
         onChange={onChange} error={errors.MaritalStatusId}/>
@@ -67,7 +67,7 @@ const Register2Form = ({mysperro, allGenders, maritalStatus, onNext, onPrev, onC
 };
 
 Register2Form.propTypes = {
-  mysperro: React.PropTypes.object.isRequired,
+  registration: React.PropTypes.object.isRequired,
   onPrev: React.PropTypes.func.isRequired,
   onNext: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,

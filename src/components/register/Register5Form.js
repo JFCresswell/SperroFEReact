@@ -2,7 +2,7 @@ import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 
-const Register5Form = ({mysperro, allEducation, allIncome, allHouseholdSize, householdIncome, livingSituation, onNext, onPrev, onChange, errors}) => {
+const Register5Form = ({registration, allEducation, allIncome, allHouseholdSize, householdIncome, livingSituation, onNext, onPrev, onChange, errors}) => {
   return (
     <form>
       <h1>General Information</h1>
@@ -10,7 +10,7 @@ const Register5Form = ({mysperro, allEducation, allIncome, allHouseholdSize, hou
       <SelectInput
         name="education"
         label="Highest education level"
-        defaultValue={mysperro.EducationLevelId}
+        defaultValue={registration.EducationLevelId}
         defaultOption="Select Education Level"
         options={allEducation}
         onChange={onChange} error={errors.EducationLevelId}/>
@@ -18,7 +18,7 @@ const Register5Form = ({mysperro, allEducation, allIncome, allHouseholdSize, hou
       <SelectInput
         name="income"
         label="Income Range"
-        defaultValue={mysperro.IncomeRangeId}
+        defaultValue={registration.IncomeRangeId}
         defaultOption="Select Income Range"
         options={allIncome}
         onChange={onChange} error={errors.IncomeRangeId}/>
@@ -26,7 +26,7 @@ const Register5Form = ({mysperro, allEducation, allIncome, allHouseholdSize, hou
       <SelectInput
         name="householdsize"
         label="Household Size"
-        defaultValue={mysperro.HouseholdSizeId}
+        defaultValue={registration.HouseholdSizeId}
         defaultOption="Select Household size"
         options={allHouseholdSize}
         onChange={onChange} error={errors.HouseholdSizeId}/>
@@ -34,7 +34,7 @@ const Register5Form = ({mysperro, allEducation, allIncome, allHouseholdSize, hou
       <SelectInput
         name="householdincome"
         label="Household Income"
-        defaultValue={mysperro.HouseholdIncomeId}
+        defaultValue={registration.HouseholdIncomeId}
         defaultOption="Select Household Income"
         options={householdIncome}
         onChange={onChange}
@@ -43,7 +43,7 @@ const Register5Form = ({mysperro, allEducation, allIncome, allHouseholdSize, hou
       <SelectInput
         name="livingsituation"
         label="Living Situation"
-        defaultValue={mysperro.LivingSituationId}
+        defaultValue={registration.LivingSituationId}
         defaultOption="Select Living Situation"
         options={livingSituation}
         onChange={onChange}
@@ -66,7 +66,7 @@ const Register5Form = ({mysperro, allEducation, allIncome, allHouseholdSize, hou
 };
 
 Register5Form.propTypes = {
-  mysperro: React.PropTypes.object.isRequired,
+  registration: React.PropTypes.object.isRequired,
   onPrev: React.PropTypes.func.isRequired,
   onNext: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,

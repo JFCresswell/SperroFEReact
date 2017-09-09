@@ -10,8 +10,8 @@ export function companiesFormattedForDropdown(companies) {
 export function genericFormattedForDropdown(genericList) {
   return genericList.map(genericItem => {
     return {
-      value: genericItem.Id,
-      text: genericItem.Display
+      value: genericItem.id,
+      text: genericItem.display
     };
   });
 }

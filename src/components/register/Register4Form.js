@@ -2,7 +2,7 @@ import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 
-const Register4Form = ({mysperro, onNext, onPrev, onChange, errors}) => {
+const Register4Form = ({registration, onNext, onPrev, onChange, errors}) => {
   return (
     <form>
       <h1>Contact Information</h1>
@@ -10,21 +10,21 @@ const Register4Form = ({mysperro, onNext, onPrev, onChange, errors}) => {
       <TextInput
         name="telephone"
         label="Main Phone"
-        defaultValue={mysperro.Phone}
+        defaultValue={registration.Phone}
         onChange={onChange}
         error={errors.State}/>
 
       <TextInput
         name="cell"
         label="Cell Phone"
-        defaultValue={mysperro.Cell}
+        defaultValue={registration.Cell}
         onChange={onChange}
         error={errors.State}/>
 
       <TextInput
         name="email"
         label="Email"
-        defaultValue={mysperro.Email}
+        defaultValue={registration.Email}
         onChange={onChange}
         error={errors.State}/>
 
@@ -45,7 +45,7 @@ const Register4Form = ({mysperro, onNext, onPrev, onChange, errors}) => {
 };
 
 Register4Form.propTypes = {
-  mysperro: React.PropTypes.object.isRequired,
+  registration: React.PropTypes.object.isRequired,
   onPrev: React.PropTypes.func.isRequired,
   onNext: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,
