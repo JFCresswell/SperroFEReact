@@ -60,7 +60,7 @@ class PrizeApi {
     });
   }
 
-  static deleteprize(prizeId) {
+  static deletePrize(prizeId) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const indexOfPrizeToDelete = prizes.findIndex(prize => {

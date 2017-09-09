@@ -6,3 +6,27 @@ export function companiesFormattedForDropdown(companies) {
     };
   });
 }
+
+export function genericFormattedForDropdown(genericList) {
+  return genericList.map(genericItem => {
+    return {
+      value: genericItem.Id,
+      text: genericItem.Display
+    };
+  });
+}
+
+export function numericRangeOpenFormattedForDropdown(low, high) {
+  let list = [];
+  let idx = 0;
+  for (let id = low; id <= high; id++)
+  {
+    let idText = id === high ? id.toString() + ' or higher' : id.toString();
+    list.push({value: idx, text: idText});
+
+    ++idx;
+  }
+  return list;
+}
+
+
