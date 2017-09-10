@@ -5,17 +5,20 @@ const prizes = [
   {
     Id: 1,
     Name: 'Chiefs tickets',
-    Description: 'tickets on 40 yard line'
+    Description: 'tickets on 40 yard line',
+    SponsorId: 1
   },
   {
     Id: 2,
     Name: 'Washer',
-    Description: 'new washing machine'
+    Description: 'new washing machine',
+    SponsorId: 3
   },
   {
     Id: 3,
     Name: 'Yard work',
-    Description: '5 hours of yard work'
+    Description: '5 hours of yard work',
+    SponsorId: 4
   }
 ];
 

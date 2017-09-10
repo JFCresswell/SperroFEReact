@@ -7,6 +7,15 @@ export function companiesFormattedForDropdown(companies) {
   });
 }
 
+export function sponsorsFormattedForDropdown(sponsors) {
+  return sponsors.map(sponsor => {
+    return {
+      value: sponsor.Id,
+      text: sponsor.CompanyName
+    };
+  });
+}
+
 export function genericFormattedForDropdown(genericList) {
   return genericList.map(genericItem => {
     return {
