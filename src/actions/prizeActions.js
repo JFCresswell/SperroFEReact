@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import prizeApi from '../api/mockPrizeApi';
+import PrizeApi from '../api/mockPrizeApi';
 import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
 export function loadPrizesSuccess(prizes) {
@@ -17,7 +17,7 @@ export function updatePrizeSuccess(prize) {
 export function loadPrizes() {
   return function(dispatch) {
     dispatch(beginAjaxCall());
-    return prizeApi.getAllPrizes().then(prizes => {
+    return PrizeApi.getAllPrizes().then(prizes => {
       dispatch(loadPrizesSuccess(prizes));
     }).catch(error => {
       throw(error);
@@ -28,8 +28,8 @@ export function loadPrizes() {
 export function savePrize(prize) {
   return function (dispatch, getState) {
     dispatch(beginAjaxCall());
-    return prizeApi.savePrize(prize).then(prize => {
-      prize.id ? dispatch(updatePrizeSuccess(prize)) :
+    return PrizeApi.savePrize(prize).then(prize => {
+      prize.Id ? dispatch(updatePrizeSuccess(prize)) :
         dispatch(createPrizeSuccess(prize));
     }).catch(error => {
       dispatch(ajaxCallError(error));
