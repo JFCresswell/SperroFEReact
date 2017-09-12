@@ -3,6 +3,7 @@ import games from './gameReducer';
 import companies from './companyReducer';
 import prizes from './prizeReducer';
 import sponsors from './sponsorReducer';
+import pendingGames from './pendingGameReducer';
 import ajaxCallsInProgress from './ajaxStatusReducer';
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   companies,
   prizes,
   sponsors,
+  pendingGames,
   ajaxCallsInProgress
 });
 

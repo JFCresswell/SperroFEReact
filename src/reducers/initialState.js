@@ -3,5 +3,6 @@ export default {
   games: [],
   prizes: [],
   companies: [],
+  pendingGames: [],
   ajaxCallsInProgress: 0
 };
