@@ -15,7 +15,7 @@ class PendingGamesPage extends React.Component {
   }
 
   render() {
-    const {games} = this.props;
+    const {pendingGames} = this.props;
 
     return (
       <div>
@@ -26,20 +26,20 @@ class PendingGamesPage extends React.Component {
                  className="btn btn-primary"
                  onClick={this.commitDecisions}/>
         </div>
-        <PendingGameList games={games}/>
+        <PendingGameList pendingGames={pendingGames}/>
       </div>
     );
   }
 }
 
 PendingGamesPage.propTypes = {
-  games: PropTypes.array.isRequired,
+  pendingGames: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    games: state.games
+    pendingGames: state.pendingGames
   };
 }
 

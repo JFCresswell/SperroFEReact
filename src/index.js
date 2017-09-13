@@ -10,7 +10,8 @@ import {loadGames} from './actions/gameActions';
 import {loadCompanies} from './actions/companyActions';
 import {loadSponsors} from './actions/sponsorActions';
 import {loadPrizes} from './actions/prizeActions';
-
+import {loadPendingGames} from './actions/pendingGameActions';
+import {loadSupportedGames} from './actions/supportedGameActions';
 
 import './styles/styles.css'; //Webpack can import CSS files too!
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -21,6 +22,8 @@ store.dispatch(loadSponsors());
 store.dispatch(loadGames());
 store.dispatch(loadCompanies());
 store.dispatch(loadPrizes());
+store.dispatch(loadPendingGames());
+store.dispatch(loadSupportedGames());
 
 render(
   <Provider store={store}>

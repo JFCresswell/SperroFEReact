@@ -4,15 +4,15 @@
 import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
-const PendingGameListRow = ({game}) => {
+const PendingGameListRow = ({pendingGame}) => {
   return (
     <tr>
       <td>
         <div>
-          <span><h4>{game.Title}</h4></span>
+          <span><h4>{pendingGame.Title}</h4></span>
           <br/>
           <span><label>Status</label>
-            <select value={game.Approved}>
+            <select value={pendingGame.Approved}>
               <option value="0">Pending</option>
               <option value="1">Approve</option>
               <option value="2">Reject</option>
@@ -20,9 +20,9 @@ const PendingGameListRow = ({game}) => {
           </span>
           <br/>
           <div>
-            <span><label>Description </label>{game.Description}</span>
+            <span><label>Description </label>{pendingGame.Description}</span>
             <br/>
-            <span><label>Category </label>{game.Category}</span>
+            <span><label>Category </label>{pendingGame.Category}</span>
           </div>
         </div>
       </td>
@@ -31,7 +31,7 @@ const PendingGameListRow = ({game}) => {
 };
 
 PendingGameListRow.propTypes = {
-  game: PropTypes.object.isRequired
+  pendingGame: PropTypes.object.isRequired
 };
 
 export default PendingGameListRow;

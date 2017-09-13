@@ -4,5 +4,6 @@ export default {
   prizes: [],
   companies: [],
   pendingGames: [],
+  supportedGames: [],
   ajaxCallsInProgress: 0
 };

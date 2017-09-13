@@ -4,7 +4,7 @@
 import React, {PropTypes} from 'react';
 import PendingGameListRow from './PendingGameListRow';
 
-const PendingGameList = ({games}) => {
+const PendingGameList = ({pendingGames}) => {
   return (
     <table className="table">
       {/*<thead>*/}
@@ -15,8 +15,8 @@ const PendingGameList = ({games}) => {
       {/*</tr>*/}
       {/*</thead>*/}
       <tbody>
-      {games.map(game =>
-        <PendingGameListRow key={game.Id} game={game}/>
+      {pendingGames.map(pendingGame =>
+        <PendingGameListRow key={pendingGame.Id} pendingGame={pendingGame}/>
       )}
       </tbody>
     </table>
@@ -24,7 +24,7 @@ const PendingGameList = ({games}) => {
 };
 
 PendingGameList.propTypes = {
-  games: PropTypes.array.isRequired
+  pendingGames: PropTypes.array.isRequired
 };
 
 export default PendingGameList;

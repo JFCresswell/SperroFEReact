@@ -1,16 +1,16 @@
 import * as types from './actionTypes';
-import pendingGameApi from '../api/mockPendingGameApi';
+import PendingGameApi from '../api/mockPendingGameApi';
 import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
-export function loadPendingGamesSuccess(games) {
-  return { type: types.LOAD_PENDING_GAMES_SUCCESS, games};
+export function loadPendingGamesSuccess(pendingGames) {
+  return { type: types.LOAD_PENDING_GAMES_SUCCESS, pendingGames};
 }
 
 export function loadPendingGames() {
   return function(dispatch) {
     dispatch(beginAjaxCall());
-    return PendingGameApi.getAllPendingGames().then(games => {
-      dispatch(loadPendingGamesSuccess(games));
+    return PendingGameApi.getAllPendingGames().then(pendingGames => {
+      dispatch(loadPendingGamesSuccess(pendingGames));
     }).catch(error => {
       throw(error);
     });
