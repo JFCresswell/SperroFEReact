@@ -5,9 +5,26 @@ import {bindActionCreators} from 'redux';
 import PendingGameList from './PendingGameList';
 import {Link} from 'react-router';
 
+ import {genericFormattedForDropdown} from '../../selectors/selectors';
+
 class PendingGamesPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+
+    this.state = {
+      statuses : genericFormattedForDropdown([
+        {id: 0, display: 'Pending'},
+        {id: 1, display: 'Approve'},
+        {id: 2, display: 'Reject'}])
+    };
+
+  this.updatePendingState = this.updatePendingState.bind(this);
+
+  }
+
+  updatePendingState(event) {
+    const field = event.target.name;
+    return this.setState({});
   }
 
   commitDecisions() {
@@ -26,7 +43,10 @@ class PendingGamesPage extends React.Component {
                  className="btn btn-primary"
                  onClick={this.commitDecisions}/>
         </div>
-        <PendingGameList pendingGames={pendingGames}/>
+        <PendingGameList
+          pendingGames={pendingGames}
+          allStatuses={this.state.statuses}
+          onChange={this.updatePendingState}/>
       </div>
     );
   }
