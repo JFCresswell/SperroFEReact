@@ -18,8 +18,8 @@ class PendingGamesPage extends React.Component {
         {id: 2, display: 'Reject'}])
     };
 
-  this.updatePendingState = this.updatePendingState.bind(this);
-
+    this.updatePendingState = this.updatePendingState.bind(this);
+    this.decidePendingGame = this.decidePendingGame.bind(this);
   }
 
   updatePendingState(event) {
@@ -27,7 +27,7 @@ class PendingGamesPage extends React.Component {
     return this.setState({});
   }
 
-  commitDecisions() {
+  decidePendingGame() {
     alert('committed');
   }
 
@@ -41,7 +41,7 @@ class PendingGamesPage extends React.Component {
           <input type="submit"
                  value="Commit"
                  className="btn btn-primary"
-                 onClick={this.commitDecisions}/>
+                 onClick={this.decidePendingGame}/>
         </div>
         <PendingGameList
           pendingGames={pendingGames}
