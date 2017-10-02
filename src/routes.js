@@ -12,6 +12,7 @@ import ManagePrizePage from './components/prize/ManagePrizePage'; //eslint-disab
 import ManageSponsorPage from './components/prize/ManageSponsorPage'; //eslint-disable-line import/no-named-as-default
 import ManageRegisterPage from './components/register/ManageRegisterPage'; //eslint-disable-line import/no-named-as-default
 import ManageGamePage from './components/game/ManageGamePage'; //eslint-disable-line import/no-named-as-default
+import ManagePendingGamePage from './components/pending/ManagePendingGamePage'; //eslint-disable-line import/no-named-as-default
 
 export default (
   <Route path="/" component={App}>
@@ -19,7 +20,8 @@ export default (
     <Route path="games" component={GamesPage} />
     <Route path="game" component={ManageGamePage} />
     <Route path="game/:id" component={ManageGamePage} />
-    <Route path="pending" component={PendingGamesPage} />
+    <Route path="pendingGames" component={PendingGamesPage} />
+    <Route path="pendingGame" component={ManagePendingGamePage} />
     <Route path="supported" component={SupportedGamesPage} />
     <Route path="prizes" component={PrizesPage} />
     <Route path="prize" component={ManagePrizePage} />

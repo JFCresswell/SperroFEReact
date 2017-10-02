@@ -9,7 +9,7 @@ const Header = ({loading}) => {
       {" | "}
       <Link to="/games" activeClassName="active">Games</Link>
       {" | "}
-      <Link to="/pending" activeClassName="active">Pending Games</Link>
+      <Link to="/pendingGames" activeClassName="active">Pending Games</Link>
       {" | "}
       <Link to="/supported" activeClassName="active">Supported Games</Link>
       {" | "}

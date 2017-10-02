@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import * as pendingGameActions from '../../actions/pendingGameActions';
 import {bindActionCreators} from 'redux';
 import PendingGameList from './PendingGameList';
-import {Link} from 'react-router';
+import {browserHistory, Link} from 'react-router';
 
  import {genericFormattedForDropdown} from '../../selectors/selectors';
 
@@ -19,12 +19,18 @@ class PendingGamesPage extends React.Component {
     };
 
     this.updatePendingState = this.updatePendingState.bind(this);
+    this.redirectToAddPendingGamePage = this.redirectToAddPendingGamePage.bind(this);
     this.decidePendingGame = this.decidePendingGame.bind(this);
   }
 
   updatePendingState(event) {
     const field = event.target.name;
     return this.setState({});
+  }
+
+
+  redirectToAddPendingGamePage() {
+    browserHistory.push('/pendingGame');
   }
 
   decidePendingGame() {
@@ -38,6 +44,11 @@ class PendingGamesPage extends React.Component {
       <div>
         <h2>Pending Games</h2>
         <div className="btn-group">
+          <input type="submit"
+                 value="Add Pending Game"
+                 className="btn btn-primary"
+                 onClick={this.redirectToAddPendingGamePage}/>
+
           <input type="submit"
                  value="Commit"
                  className="btn btn-primary"
