@@ -14,8 +14,12 @@ export class ManagePendingGamePage extends React.Component {
       saving: false
     };
 
-    this.updatePendingGameState = this.updatePendingState.bind(this);
+    this.updatePendingGameState = this.updatePendingGameState.bind(this);
     this.savePendingGame = this.savePendingGame.bind(this);
+  }
+
+  savePendingGame(event) {
+    // TODO
   }
 
   updatePendingGameState(event) {
@@ -47,6 +51,15 @@ ManagePendingGamePage.contextTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+  let pendingGame = {Id: 0, Title: '', Description: '', Category: '', Approved: 0};
+
+  if (state.pendingGame) {
+    pendingGame = state.pendingGame;
+  }
+
+  return {
+    pendingGame: pendingGame
+  };
 }
 
 function mapDispatchToProps(dispatch) {

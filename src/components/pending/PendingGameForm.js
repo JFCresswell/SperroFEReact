@@ -34,6 +34,7 @@ const PendingGameForm = ({pendingGame, onSave, onChange, saving, errors}) => {
 PendingGameForm.propTypes = {
   pendingGame: React.PropTypes.object.isRequired,
   onSave: React.PropTypes.func.isRequired,
+  onChange: React.PropTypes.func.isRequired,
   saving: React.PropTypes.bool,
   errors: React.PropTypes.object
 };

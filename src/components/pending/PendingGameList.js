@@ -4,7 +4,7 @@
 import React, {PropTypes} from 'react';
 import PendingGameListRow from './PendingGameListRow';
 
-const PendingGameList = ({pendingGames, allStatuses}) => {
+const PendingGameList = ({pendingGames, allStatuses, onChange}) => {
   return (
     <table className="table">
       {/*<thead>*/}
@@ -16,7 +16,10 @@ const PendingGameList = ({pendingGames, allStatuses}) => {
       {/*</thead>*/}
       <tbody>
       {pendingGames.map(pendingGame =>
-        <PendingGameListRow key={pendingGame.Id} pendingGame={pendingGame} allStatuses={allStatuses}/>
+        <PendingGameListRow key={pendingGame.Id}
+        pendingGame={pendingGame}
+        allStatuses={allStatuses}
+        onChange={onChange}/>
       )}
       </tbody>
     </table>
@@ -25,7 +28,8 @@ const PendingGameList = ({pendingGames, allStatuses}) => {
 
 PendingGameList.propTypes = {
   pendingGames: PropTypes.array.isRequired,
-  allStatuses: PropTypes.array.isRequired
+  allStatuses: PropTypes.array.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default PendingGameList;
